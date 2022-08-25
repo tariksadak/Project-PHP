@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Galerie TH</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- le style de la page -->
+    <link rel="stylesheet" href="./public/css/styles.css" type="text/css" />
+    
+    <link rel="shortcut icon" href="./public/images/logo.png" />
+    
+    <!-- la font de la page -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- utilisation de font awesome dans le site = 1-->
+    <script src="https://kit.fontawesome.com/c7d2032d52.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  
+    <!-- Navbar du site -->
+    <header class="navbar">
+
+      <!-- Container nav-->
+        <nav class="navbar__container">
+
+          <!-- LOGO -->
+            <a href="index.php?route=home" id="navbar__logo">Tapissier Herbretais</a>
+
+            <!-- button pour le responsive -->
+            <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span> <span class="bar"></span>
+            <span class="bar"></span>
+            </div>
+
+            <!-- liens cliquables-->
+            <ul class="navbar__menu">
+            <li class="navbar__item">
+                <a href="index.php?route=home" class="navbar__links" id="home-page">Accueil</a>
+            </li>
+            
+            <li class="navbar__item">
+                <a href="index.php?route=listCategories" class="navbar__links" id="project-page">Galerie</a>
+            </li>
+            
+            
+            <?php if(isset($_SESSION['admin'])): ?>
+            
+            <li class="navbar__item">
+                <a href="index.php?route=deconnexion" class="navbar__links" id="skill-page">Déconnexion</a>
+            </li>
+            
+            <?php else: ?>
+            <li class="navbar__item">
+                <a href="index.php?route=connexion" class="navbar__links" id="skill-page">Admin</a>
+            </li>
+            
+            <?php endif; ?>
+            <li class="navbar__item">
+                <a href="index.php?route=contactForm" class="navbar__links" id="contact-page">Contact</a>
+            </li>
+            </ul>
+          </nav>
+      </header>
+    <main>
+        
+    <!-- contenue de notre page  -->    
+    <?php include_once $view; ?>
+    
+    
+    </main>
+    
+     <footer>
+
+
+        <!-- Le Footer du site -->
+        <div class="footer__container">
+
+
+        <!-- les liens dans le footer -->
+        <div class="footer__links">
+
+
+          <!-- wrapper 1 -->
+          <div class="footer__link--wrapper">
+
+            <!-- les items -->
+            <div class="footer__link--items">
+              <h2>Contact</h2>
+              <a href="mailto:tapissierherbretais@gmail.com">Par email</a> <a href="tel:+33695305587">+33695305587</a> 
+            </div>
+          </div>
+
+          <!-- wrapper 2 -->
+          <div class="footer__link--wrapper">
+            <div class="footer__link--items">
+              <h2>Réseaux</h2>
+              <a href="index.php?route=inProgress">Instagram</a> <a href="https://www.facebook.com/TapissierHerbretais/">Facebook</a>
+              <a href="https://api.whatsapp.com/send?phone=33695305587&text=Bonjour!">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- section reseaux sociaux et credit -->
+        <section class="social__media">
+          <div class="social__media--wrap">
+            <div class="footer__logo" id="page-bottom">
+              <a href="#home" > <img src="./public/images/logo.png" alt=""></a>
+            </div>
+            <p class="website__rights">© Tapissier Herbretais 2022. Tous droits réservés</p>
+            <div class="social__icons">
+
+              <a href="https://www.facebook.com/TapissierHerbretais/" class="social__icon--link" target="_blank">
+                <i class="fab fa-facebook"></i>
+              </a>
+
+              <a href="index.php?route=inProgress" class="social__icon--link">
+                <i class="fab fa-instagram"></i>
+              </a>
+
+              <a href="https://api.whatsapp.com/send?phone=33695305587&text=Bonjour!" class="social__icon--link" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+
+            </div>
+          </div>
+        </section>
+        </div>
+  </footer >
+  
+  
+    <script type="text/javascript" src="./public/javascript/app.js"></script>
+</body>
+</html>

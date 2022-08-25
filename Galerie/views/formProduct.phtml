@@ -1,0 +1,71 @@
+<section class="formStyle" id="formProduct">
+    
+    
+    <!-- titre option modifier out ajouter -->
+<h1><?= (isset($product))?"Modifier un produit":"Ajouter un produit" ?></h1>
+
+<!-- form ajout ou modification du produit -->
+ 
+    <form action="<?= (isset($product))?"index.php?route=submitEditProduct":"index.php?route=submitAddProduct"?>" method="POST" enctype="multipart/form-data" >
+        
+            <input class="input" type="hidden" name="id" id="id" value="<?= $product['id'] ?? "" ?>"/>
+            
+            <input class="input" placeholder="Nom du produit" type="text" name="name" id="name" value="<?= $product['name'] ?? "" ?>" required/>
+            
+            <textarea  class="input" placeholder="Description du produit" type="text" name="description" id="description" required><?= $product['description'] ?? "" ?></textarea>
+            
+            
+            <!-- selection de categorie pour chaque categorie -->
+            
+            
+            <select class="input" name="category_id" id="category_id" required>
+                <option class="inputOption"  value="">Choisir une catégorie...</option>
+                
+                    <?php foreach( $categories as $categorie ) : ?>
+                
+                    <!-- Si la catégorie est celle du produit, alors il faut lui ajouter l'attribut "selected". -->
+    
+                        <option class="inputOption" value="<?= $categorie['id'] ?>"
+                    
+                            <?php if(isset ($product) && $product['category_id'] == $categorie['id'])
+                            {
+                                echo "selected";
+                            }?>
+                            
+                            ><?= htmlspecialchars( $categorie['title'] ) ?></option>
+                        <?php endforeach; ?>
+            </select>
+            
+            <!-- si images exist aficher div -->
+            
+            <?php if(isset($product)): ?>
+            
+                <div class="input">
+                    
+                    <?php foreach( $product['pictures'] as $picture ) : ?>
+        
+        
+                    <a href="index.php?route=editPictures&id=<?php echo($picture['id']) ?>">X</a> <?php echo($picture['url']) ?> 
+                
+            
+                    <?php endforeach; ?>
+            
+                    </div>
+                    
+            <?php endif; ?>
+            
+            
+            <!--  le input des images -->
+            
+            
+             
+            <input class="input" type="file" name="pictures[]" id="pictures" <?php if(!isset($product)): ?> required <?php endif; ?> accept="video/*, image/*" multiple />
+            
+            
+            <!-- le submit avec condition -->
+            
+            
+            <div class="main__btn"><input  class="in__btn" type="submit" value="<?= (isset($product)) ?"Modifier":"Enregistrer" ?>"/></div>
+    </form>
+
+</section>

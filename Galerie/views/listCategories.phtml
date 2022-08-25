@@ -1,0 +1,24 @@
+<section class="table">
+    <h1>Liste des catégories</h1>
+
+
+<table class="tableContainer" >
+    <tr class="head" >
+        <th class="tableContent" >Nom de la catégorie</th>
+    </tr>
+    
+    
+    <!-- pour chaque categories = categorie -->
+    <?php foreach( $categories as $categorie ) : ?>
+    <tr>
+        <td class="tableContent">
+            
+            
+    <!-- on appele l'id dabord puis on met le titre du produit -->
+        <a href="index.php?route=productByCategorie&id=<?= $categorie['id']; ?>"><?= $categorie['title']; ?></a>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+
+</section>

@@ -1,0 +1,82 @@
+<!-- on reprend le titre de la categorie -->
+<section class="table">
+    <h1> <?php $categorie['title'] ?> </h1>
+
+
+
+<table class="tableContainer">
+    <tr class="head">
+        <th>Nom du produit</th>
+        <th>Description </th>
+        <th>Photos </th>
+        
+        <!-- condition si il ya une session admin -->
+        <?php if(isset($_SESSION['admin'])): ?>
+        
+        
+        <!-- sinon -->
+        <th>Actions </th>
+        
+        
+        <!-- fin condition -->
+        <?php endif; ?>
+    </tr>
+    
+    
+    <!-- pour chaque produits un produit -->
+    <?php foreach( $products as $product ) : ?>
+    <tr class="foot">
+        <td class="tableContent2">
+          <?= htmlspecialchars($product['name']) ?>
+        </td>
+        <td class="tableContent2">
+            <?= htmlspecialchars($product['description']) ?>
+        </td>
+         <td class="tableContent3">
+            <button onclick="openPopUp(<?= htmlspecialchars($product['id']) ?>)">voir</button>
+            
+            
+           <!-- popup qui affiche les images -->
+
+            <div id="popUp<?= htmlspecialchars($product['id']) ?>" class="popUp">
+            
+            
+                    <div class="popUpContent">
+                    <span onclick="closePopUp(<?= htmlspecialchars($product['id']) ?>)" class="close">&times;</span>
+                    
+                    
+                    <?php foreach( $product['pictures'] as $picture ) : ?>
+                    
+                    
+                        <img src="./public/uploads/<?php echo($picture['url']) ?>">
+                    <?php endforeach; ?>
+                    </div>
+            
+            </div>
+        </td>
+        
+        <!-- condition si il ya une session admin -->
+        <?php if(isset($_SESSION['admin'])): ?>
+        <td class="tableContent2">
+            <a href="index.php?route=editProduct&id=<?= htmlspecialchars($product['id']) ?>">Editer</a>
+            <a id="supprimer" href="index.php?route=deleteProduct&id=<?= htmlspecialchars($product['id']) ?>">Supprimer</a>
+        </td>
+        
+        
+        <!-- fin condition -->
+        <?php endif; ?>
+    </tr>
+    <?php endforeach; ?>
+</table>
+
+<!-- condition si il ya une session admin -->
+<?php if(isset($_SESSION['admin'])): ?>
+
+
+<a id="ajouter" href="index.php?route=addProduct">Ajouter</a>
+
+
+<!-- fin condition -->
+<?php endif; ?>
+
+</section>

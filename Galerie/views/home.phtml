@@ -1,0 +1,85 @@
+
+
+
+    <!-- Home page du site -->
+    <div class="home" id="home">
+
+      <!-- home page container-->
+        <div class="home__container">
+            
+            
+        <!-- condition si il ya une session admin -->
+        <?php if(isset($_SESSION['admin'])): ?>
+        
+        <h1>Bonjour <?= $_SESSION['admin']['username'] ?></h1>
+
+
+        <!-- fin condition -->
+        <?php endif; ?>
+
+          <!-- titre du home page-->
+            <h1 class="home__heading">De l'Art chez<span> Vous</span>.</h1>
+
+            <!-- description dans une div de style-->
+            <div class="catchPhrase">
+            <p class="home__description">Fabrication de canapés, chaises et autres...</p>
+            </div>
+
+            <!-- button partie suivante + class global buttons -->
+            <div class="main__btn" id="scroll-to-bottom"><a class="in__btn">Explorer</a></div>
+        </div>
+    </div>
+
+    <!-- projets du site -->
+    <div class="project" id="project">
+
+      <!-- titre h1-->
+        <h1>Mes Projets</h1>
+
+        <!-- liste des projets-->
+        <div class="project__wrapper">
+          <div class="project__card" id="project1"></div>
+          <div class="project__card" id="project2"></div>
+          <div class="project__card" id="project3"></div>
+          <div class="project__card" id="project4"></div>
+          <div class="project__card" id="project5"></div>
+          <div class="project__card" id="project6"></div>
+        </div>
+
+        <!-- REDIRECTION VERS LA GALERIE -->
+        <div class="main__btn"><a class="in__btn" href="index.php?route=listCategories">Voir Galerie</a></div>
+    </div>
+
+    <!-- Les competence -->
+    <div class="skills" id="skills">
+
+
+      <!-- container des competence-->
+        <div class="skills__container">
+
+          <!-- Container de l'image-->
+          <div class="skills__img--container">
+
+            <!-- l'image en carte-->
+            <div class="skills__img--card"><i class="fa-solid fa-couch"></i></div>
+          </div>
+
+
+          <!-- les competences-->
+          <div class="skills__content">
+            <h1>Mes Compétences</h1>
+            <h2>Expertise dans la manipulation du tissue, bois, montage etc..</h2>
+            
+
+            <!-- button redirection CV-->
+            <div class="main__btn"><a class="in__btn" href="./public/documents/cv.pdf">Télécharger CV</a></div>
+          </div>
+        </div>
+    </div>
+    
+
+
+
+
+
+
